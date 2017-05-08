@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :logged_in?
+  helper_method :logged_in?, :current_user
 
 
 
@@ -12,11 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-      if User.find_by(params[:id])
-        current_user = User.find(params[:id])
-      else
-        redirect_to signup_path
-      end
+      @current_user = User.find(session[:user_id])
   end
 
 

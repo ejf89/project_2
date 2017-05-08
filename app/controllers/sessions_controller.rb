@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  
+
   def create
     @user = User.find_by(username: params[:user][:username])
 
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to root_path
+    redirect_to signup_path
   end
 
 end
