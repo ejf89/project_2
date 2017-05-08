@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
-   has_many :pictures
-   has_many :comments
+  validates :username, presence: true, uniqueness: true
+  has_many :pictures
+  has_many :comments
+
 
 
     def received_comments
@@ -13,6 +15,8 @@ class User < ApplicationRecord
         end
         #adjust return value to be comment content
     end
+
+
 
 
 end
