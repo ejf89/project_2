@@ -1,4 +1,5 @@
 class PictureTag < ApplicationRecord
-  belongs_to :pictures
-  belongs_to :tags
+  belongs_to :picture
+  belongs_to :tag
+  has_many :comments
 end
