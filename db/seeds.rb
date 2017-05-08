@@ -12,11 +12,13 @@ end
 
 url = "http://www.defenders.org/sites/default/files/styles/large/public/dolphin-kristian-sekulic-isp.jpg"
 
-Picture.create(
-  image_url: url,
-  title: "Saw a dolphin!",
-  user_id: User.first.id
-)
+(1..10).to_a.each do |number|
+    Picture.create(
+      image_url: url,
+      title: "picture #{number}",
+      user_id: User.first.id
+    )
+end
 
 Picture.create(
   image_url: url,
