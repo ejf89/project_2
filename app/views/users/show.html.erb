@@ -11,5 +11,13 @@
 <%=f.label :title %>
 <%=f.text_field :title %>
 <%=f.hidden_field :user_id, :value => @user.id %>
+
+<br>
+
+<% @tags.each do |tag| %>
+    <%= f.fields_for :tags, tag do |ff| %>
+        <%= tag.name %> <%= ff.check_box :name %> <br>
+        <% end %>
+    <% end %>
 <%=f.submit "Add Photo" %>
 <% end %>
