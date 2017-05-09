@@ -4,7 +4,6 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
   end
 
-
   def show
       @picture = Picture.find(params[:id])
       @comment = Comment.new
@@ -15,7 +14,6 @@ class PicturesController < ApplicationController
     @picture = Picture.create(picture_params)
     redirect_to user_path(current_user)
   end
-
 
 
   private

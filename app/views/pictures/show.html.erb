@@ -5,9 +5,12 @@
 <br>
 <br>
 
+<%= flash[:notice] %>
+
 <% @comments.each do |comment| %>
-<p><%= link_to comment.user.username, user_path(comment.user.id) %> says: <%= comment.content %></p>
+<p><%= link_to comment.user.username, user_path(comment.user.id) %>: <%= comment.content %></p>
 <% end %>
+
 
 add a comment:
 <%= form_for @comment do |f| %>

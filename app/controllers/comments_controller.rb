@@ -7,9 +7,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-      @comment = Comment.create(comment_params)
+      @comment = Comment.new(comment_params)
       @picture = Picture.find(params["comment"]["picture_id"])
-      redirect_to user_picture_url(current_user.id, @picture)
+
+      if @comment.save
+          redirect_to user_picture_url(current_user.id, @picture)
+      else
+          flash[:notice] = "Please enter a commento"
+          redirect_to user_picture_url(current_user.id, @picture)
+      end
   end
 
   def show
