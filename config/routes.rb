@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resources :pictures, only: [:new, :create, :show]
+    resources :pictures, only: [:new, :create, :show, :destroy]
   end
 
   resources :comments
