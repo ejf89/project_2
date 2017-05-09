@@ -21,10 +21,10 @@ before_action :authorize_user, only: [:index, :show]
 
   def show
     @user = User.find(params[:id])
+    @pictures = Picture.where(user_id: @user.id)
+    @picture = Picture.new
+
   end
-
-
-
 
 
   private
@@ -32,4 +32,5 @@ before_action :authorize_user, only: [:index, :show]
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
+
 end
