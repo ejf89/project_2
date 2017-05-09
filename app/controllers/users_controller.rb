@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    logged_in_user
     @user = User.find(params[:id])
   end
 
