@@ -2,7 +2,7 @@
 <h2><%= @user.email %></h2>
 
 <% @pictures.each do |picture| %>
-<img src=<%="#{picture.image_url}"%> >
+<%=  link_to image_tag("#{picture.image_url}"), user_picture_url(current_user.id, picture) %>
 <% end %>
 
 <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>

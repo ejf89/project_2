@@ -6,10 +6,12 @@ class PicturesController < ApplicationController
 
 
   def show
+      @picture = Picture.find(params[:id])
   end
 
   def create
-    binding.pry
+    @picture = Picture.create(picture_params)
+    redirect_to user_path(current_user)
   end
 
 

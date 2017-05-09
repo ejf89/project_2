@@ -23,7 +23,6 @@ before_action :authorize_user, only: [:index, :show]
     @user = User.find(params[:id])
     @pictures = Picture.where(user_id: @user.id)
     @picture = Picture.new
-
   end
 
 
