@@ -1,21 +1,23 @@
 class SessionsController < ApplicationController
 
-  
+  def new
+  end
 
   def create
-    @user = User.find_by(username: params[:user][:username])
-
-    if @user.present? && @user.authenticate(params[:user][:username])
+    @user = User.find_by(username: params[:username])
+    if @user.present? &&
+     @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to signup_path
+      flash[:notice] = "Incorrect username or password"
+      redirect_to login_path
     end
   end
 
   def destroy
     session.clear
-    redirect_to signup_path
+    redirect_to login_path
   end
 
 end
