@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resources :pictures
+    resources :pictures, only: [:new, :create, :show]
   end
+
+  resources :comments
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
