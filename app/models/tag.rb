@@ -12,15 +12,17 @@ class Tag < ApplicationRecord
   end
 
 
-  def self.trending
-      @pictures = Picture.all[-10..-1]
-      @pictures.sort_by do |pic|
-          pic.comments.length
+      def self.trending
+          @pictures = Picture.all[-10..-1]
+
+         @sorted =  @pictures.sort_by do |pic|
+              pic.comments.length
+          end
+        @results = @sorted.reverse.map do |picture|
+              picture.tags
+          end
+          @results.flatten!
       end
-     @pictures.first.tags.each do |tag|
-         tag.name
-     end
-  end
 
 
 end
