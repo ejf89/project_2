@@ -9,12 +9,14 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-    <%= "Hi #{current_user.username}" %>
-    <%= link_to "Log Out", user_path(current_user), method: :delete %>
-    <% end %>
+      <div class="container" align="center">
+          <% if logged_in? %>
+          <%= "Hi #{current_user.username}" %>
+          <%= link_to "Log Out", user_path(current_user), method: :delete %>
+          <% end %>
+          <%= link_to 'Back', :back %>
+      </div>
 
-    <%= link_to 'Back', :back %>
     <%= yield %>
   </body>
 </html>
