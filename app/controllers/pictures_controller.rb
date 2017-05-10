@@ -5,6 +5,7 @@ class PicturesController < ApplicationController
   end
 
   def show
+      @user = User.find(params[:user_id])
       @picture = Picture.find(params[:id])
       @comment = Comment.new
       @comments = @picture.comments

@@ -17,7 +17,9 @@ add a comment:
 <%= f.text_area :content %> <br>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 <%= f.hidden_field :picture_id, :value => @picture.id %>
-<%=f.submit "Add Comment", {:controller => 'picturestags', :action => 'create', :method => 'post', 'picture_id' => @picture.id} %>
-
+<%=f.submit "Add Comment", {:controller => 'comments', :action => 'create', :method => 'post', 'picture_id' => @picture.id} %>
 <% end %>
-<%= button_to 'delete photo', user_picture_path(@picture), method: :delete %>
+
+<% if current_user.id == @user.id %>
+    <%= button_to 'delete photo', user_picture_path(@picture), method: :delete %>
+<% end %>

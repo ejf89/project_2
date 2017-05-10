@@ -11,10 +11,10 @@ class CommentsController < ApplicationController
       @picture = Picture.find(params["comment"]["picture_id"])
 
       if @comment.save
-          redirect_to user_picture_url(current_user.id, @picture)
+          redirect_to user_picture_url(@picture.user_id, @picture)
       else
           flash[:notice] = "Please enter a commento"
-          redirect_to user_picture_url(current_user.id, @picture)
+          redirect_to user_picture_url(@picture.user_id, @picture)
       end
   end
 
