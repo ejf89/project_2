@@ -2,14 +2,13 @@ class Tag < ApplicationRecord
   has_many :picture_tags
   has_many :pictures, through: :picture_tags
 
-  validates :name, uniqueness: true 
+  validates :name, uniqueness: true
 
 
   def self.most_popular
-     mapped = Tag.all.sort_by do |tag|
+     mapped = Tag.all.limit(5).sort_by do |tag|
           tag.pictures.length
       end
-       mapped[-3..-1]
   end
 
 

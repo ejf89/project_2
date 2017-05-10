@@ -1,0 +1,11 @@
+<br>
+populare: <br>
+<ul>
+    <% Tag.most_popular.each do |tag| %>
+        <li><%= link_to tag.name, tag_path(tag) %></li>
+    <% end %>
+</ul>
+
+
+trendini: <br>
+<%= Tag.trending %>

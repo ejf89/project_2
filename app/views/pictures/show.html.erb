@@ -11,9 +11,9 @@
 <p><%= link_to comment.user.username, user_path(comment.user.id) %>: <%= comment.content %></p>
 <% end %>
 
-<% @picture.tags.each do |tag| %>
-#<%=tag.name %>
-<% end %>
+    <% @picture.tags.each do |tag| %>
+    #<%=link_to tag.name, tag_path(tag) %>
+    <% end %>
 <br>
 <br>
 add a comment:
