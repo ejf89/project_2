@@ -11,6 +11,10 @@
     <%=f.text_field :image_url %>
     <%=f.label :title %>
     <%=f.text_field :title %>
+    <%=f.label :tag %>
+      <%=fields_for :tag, @tag do |ff| %>
+      <%=ff.text_field :name %>
+      <% end %>
     <%=f.hidden_field :user_id, :value => @user.id %>
     <br>
     <br>
