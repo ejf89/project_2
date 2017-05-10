@@ -2,15 +2,17 @@
 <h2><%= @user.email %></h2>
 
 <% @pictures.each do |picture| %>
-<%=  link_to image_tag("#{picture.image_url}"), user_picture_url(current_user.id, picture) %>
+<%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
 <% end %>
 
-<%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
-<%=f.label :image_url %>
-<%=f.text_field :image_url %>
-<%=f.label :title %>
-<%=f.text_field :title %>
-<%=f.hidden_field :user_id, :value => @user.id %>
+<% if current_user.id == @user.id %>
+    <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
+    <%=f.label :image_url %>
+    <%=f.text_field :image_url %>
+    <%=f.label :title %>
+    <%=f.text_field :title %>
+    <%=f.hidden_field :user_id, :value => @user.id %>
+<% end %>
 
 <br>
 

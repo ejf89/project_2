@@ -20,4 +20,7 @@ add a comment:
 <%=f.submit "Add Comment", {:controller => 'picturestags', :action => 'create', :method => 'post', 'picture_id' => @picture.id} %>
 
 <% end %>
-<%= button_to 'delete photo', user_picture_path(@picture), method: :delete %>
+
+<% if current_user.id == @user.id %>
+    <%= button_to 'delete photo', user_picture_path(@picture), method: :delete %>
+<% end %>
