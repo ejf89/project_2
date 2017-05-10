@@ -13,6 +13,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.create(picture_params)
+    binding.pry
+    # @tag_ids = params[:picture][:tag_ids]
+    #an array of tag ids
     redirect_to user_path(current_user)
   end
 
@@ -26,7 +29,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:image_url, :title, :user_id)
+    params.require(:picture).permit(:image_url, :title, :user_id, :tag_ids =>[])
   end
 
 

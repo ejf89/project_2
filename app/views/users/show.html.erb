@@ -2,7 +2,7 @@
 <h2><%= @user.email %></h2>
 
 <% @pictures.each do |picture| %>
-<%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+  <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
 <% end %>
 
 <% if current_user.id == @user.id %>
@@ -13,14 +13,13 @@
     <%=f.text_field :title %>
     <%=f.hidden_field :user_id, :value => @user.id %>
 
-
-<br>
-
-        <% @tags.each do |tag| %>
-            <%= f.fields_for :tags, tag do |ff| %>
-                <%= tag.name %> <%= ff.check_box :name %> <br>
-                <% end %>
-            <% end %>
-        <%=f.submit "Add Photo", {:controller => "picturestags", :action => "create", :method => "post", "picture_id" => @picture.id} %>
+    <br>
+    <br>
+    <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
+    <%= b.label { b.check_box + b.text } %>
     <% end %>
+
+    <%=f.submit "Add Photo" %>
+  <% end %>
+
 <% end %>
