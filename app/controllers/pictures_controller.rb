@@ -13,7 +13,6 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-    binding.pry
     if !params[:tag][:name].empty?
     #   @tag = Tag.find_or_create_by(name: params[:tag][:name])
       @tag = Tag.new(name: params[:tag][:name])

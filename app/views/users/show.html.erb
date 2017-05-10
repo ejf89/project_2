@@ -1,29 +1,43 @@
-<h1><%= @user.username %></h1>
-<h2><%= @user.email %></h2>
+<h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
 
-<% @pictures.each do |picture| %>
-  <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
-<% end %>
 
-<% if current_user.id == @user.id %>
-    <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
-    <%=f.label :image_url %>
-    <%=f.text_field :image_url %>
-    <%=f.label :title %>
-    <%=f.text_field :title %>
-    <%=f.label :tag %>
-      <%=fields_for :tag, @tag do |ff| %>
-          <%=ff.text_field :name %>
-      <% end %>
-    <%=f.hidden_field :user_id, :value => @user.id %>
-
-    <br>
-    <br>
-    <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
-    <%= b.label { b.check_box + b.text } %>
+<div class="container" align="center">
+    <% @pictures.each do |picture| %>
+        <div class="row">
+            <div class="col s12">
+              <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+          </div>
+        </div>
     <% end %>
+</div>
 
-    <%=f.submit "Add Photo" %>
-  <% end %>
 
-<% end %>
+<div class="container">
+    <% if current_user.id == @user.id %>
+        <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
+        <%=f.label :image_url %>
+        <%=f.text_field :image_url %>
+        <%=f.label :title %>
+        <%=f.text_field :title %>
+        <%=f.label :tag %>
+          <%=fields_for :tag, @tag do |ff| %>
+              <%=ff.text_field :name %>
+          <% end %>
+        <%=f.hidden_field :user_id, :value => @user.id %>
+
+        <br>
+        <br>
+        <table border = "1">
+            <tr>
+                <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
+                <td><%= b.label { b.check_box(class: "check_box") + b.text} %></td>
+
+                <% end %>
+            </tr>
+
+        </table>
+
+        <%=f.submit "Add Photo" %>
+      <% end %>
+    <% end %>
+</div>
