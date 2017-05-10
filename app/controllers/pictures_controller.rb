@@ -13,8 +13,15 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.create(picture_params)
-    @tag = Tag.create(name: params[:tag][:name])
-    @picture.update(tag_ids: @picture.tag_ids << @tag.id)
+    if !params[:tag][:name].empty?
+      @tag = Tag.new(name: params[:tag][:name])
+      if @tag.valid?
+        @tag.save
+      else
+        @tag = Tag.find_by(name: params[:tag][:name])
+      end
+      @picture.update(tag_ids: @picture.tag_ids << @tag.id)
+    end
     #adding each tag checked or created into the tag_ids array
     redirect_to user_path(current_user)
   end
