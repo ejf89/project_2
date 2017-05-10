@@ -21,5 +21,6 @@
         <%= tag.name %> <%= ff.check_box :name %> <br>
         <% end %>
     <% end %>
-<%=f.submit "Add Photo" %>
+    <%=f.submit "Add Photo", {:controller => "picturestags", :action => "create", :method => "post", "picture_id" => @picture.id} %>
+
 <% end %>
