@@ -9,30 +9,49 @@
   <% end %>
 </div>
 
-<div class="" align="right">
-  <div class="42a5f5 blue-text lighten-1">trendin tags:</div>
-<% Tag.trending.each do |tag| %>
-     <%= link_to tag.name, tag_path(tag) %>
-<% end %>
-</div>
 
-
-<div class="" align="right">
-  <p><div class="42a5f5 blue-text lighten-1"><font font-size="10">most populare:</font></div></p>
-
-<% Tag.most_popular.each do |tag| %>
-</div>
 
 <div class="row">
+  <!-- <div class="" align="right"> -->
+    <p><div class="42a5f5 blue-text lighten-1"><font font-size="10">most populare:</font></p>
+      <div class="col s2">
+      <% Tag.most_popular.each do |tag| %>
+                <div class="chip">
+                  <%= link_to tag.name, tag_path(tag) %>
+                </div>
 
-    <div class="col s1 offset-s11">
-      <div class="chip">
-        <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+        </div>
+
+
+
+
+    <!-- <div class="" align="left"> -->
+      <div class="42a5f5 blue-text lighten-1">trendin tags:
+        <div class="col s2" align="right">
+        <% Tag.trending.each do |tag| %>
+          <div class="chip">
+            <%= link_to tag.name, tag_path(tag) %>
+          </div>
+        <% end %>
       </div>
-    </div>
-<% end %>
 
+  </div>
 </div>
+
+
+<!-- <div class="" align="right">
+  <p><div class="42a5f5 blue-text lighten-1"><font font-size="10">most populare:</font></div></p>
+    <% Tag.most_popular.each do |tag| %>
+      <div class="row">
+        <div class="col s1 offset-s11">
+          <div class="chip">
+            <%= link_to tag.name, tag_path(tag) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div> -->
 
 <div class="container" align="center">
     <% @sorted.reverse.each do |picture| %>
