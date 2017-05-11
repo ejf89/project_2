@@ -7,6 +7,19 @@
     <% end %>
 </div>
 
+<div class="container" align="right">
+  <p>trendin tags</p>
+<% Tag.trending.each do |tag| %>
+     <%= link_to tag.name, tag_path(tag) %>
+<% end %>
+</div>
+
+<div class="container" align="right">
+  <p>most populare:</p>
+<% Tag.most_popular.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+<% end %>
+</div>
 
 <div class="container" align="center">
     <% @sorted.reverse.each do |picture| %>
@@ -38,8 +51,9 @@
             <tr>
                 <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
                 <!-- <td><%= b.label { b.check_box(class: "check_box") + b.text} %></td> -->
-                <input type="checkbox" class="filled-in-box" id="<%=tag.id%>" />
-                     <label for="<%=tag.id%>"><%=b.text%></label>
+
+                <input type="checkbox" class="filled-in-box" id="<%=b.object[:id]%>" name="picture[tag_ids][]" value="<%=b.object[:id]%>" />
+                     <label for="<%=b.object[:id]%>"><%=b.text%></label>
                 <% end %>
             </tr>
         </table>
