@@ -26,7 +26,7 @@ class PicturesController < ApplicationController
           @picture.update(tag_ids: @picture.tag_ids << @tag.id)
         end
         @picture.save
-        redirect_to user_path(current_user)
+        redirect_to user_picture_path(current_user, @picture.id)
     else
 
         flash[:notice] = "Please enter a picture url!"
