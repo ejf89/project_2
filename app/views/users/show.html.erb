@@ -2,7 +2,7 @@
 
 
 <div class="container" align="center">
-    <% @pictures.each do |picture| %>
+    <% @sorted.reverse.each do |picture| %>
         <div class="row">
             <div class="col s12">
               <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
