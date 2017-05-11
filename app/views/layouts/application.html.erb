@@ -9,13 +9,22 @@
   </head>
 
   <body>
-      <div class="container" align="center">
-          <% if logged_in? %>
-          <%= "Hi #{current_user.username}" %>
-          <%= link_to "Log Out", user_path(current_user), method: :delete %>
-          <% end %>
-          <%= link_to 'Back', :back %>
-      </div>
+    <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><img src="http://i.imgur.com/CrdKavI.png"></a>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        <li><%=link_to "My Feed", user_path(current_user)%></li>
+        <li><%=link_to "Friends", users_path %></li>
+        <li><%=link_to "Tags", tags_path %></li>
+      
+
+      </ul>
+
+    </div>
+
+  </nav>
 
     <%= yield %>
   </body>

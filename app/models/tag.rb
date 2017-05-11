@@ -14,7 +14,7 @@ class Tag < ApplicationRecord
 
 
       def self.trending
-      
+
           @pictures = Picture.all[-10..-1]
 
          @sorted =  @pictures.sort_by do |pic|
