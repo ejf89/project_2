@@ -20,6 +20,7 @@ before_action :authorize_user, only: [:index, :show]
   end
 
   def show
+    @trending_tags = Tag
     @user = User.find(params[:id])
     @pictures = Picture.where(user_id: @user.id)
     @sorted = @pictures.sort_by {|picture| picture.id}
@@ -30,7 +31,7 @@ before_action :authorize_user, only: [:index, :show]
     @comments = @pictures.map {|x| x.comments}
     @comments.flatten!
     @comments.delete_if {|comment| comment.user_id == @user.id}
-    
+
   end
 
 
