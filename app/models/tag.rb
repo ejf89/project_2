@@ -14,7 +14,10 @@ class Tag < ApplicationRecord
 
 
       def self.trending
+<<<<<<< HEAD
       
+=======
+>>>>>>> f3a482a8f13a7f06a6bc7741da10badd7dc27c1a
           @pictures = Picture.all[-10..-1]
 
          @sorted =  @pictures.sort_by do |pic|
