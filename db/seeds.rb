@@ -37,3 +37,13 @@ Comment.create(
   picture_id: 1,
   user_id: 1
 )
+
+Tag.create(
+  name: "tag1"
+)
+Tag.create(
+  name: "tag2"
+)
+Tag.create(
+  name: "tag3"
+)
