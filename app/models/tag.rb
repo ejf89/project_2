@@ -6,7 +6,7 @@ class Tag < ApplicationRecord
 
 
   def self.most_popular
-     mapped = Tag.all.limit(5).sort_by do |tag|
+     mapped = Tag.all.limit(10).sort_by do |tag|
           tag.pictures.length
       end
   end
