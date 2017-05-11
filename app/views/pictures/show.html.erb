@@ -1,6 +1,20 @@
 <div class="container" align="center">
-    <%= image_tag(@picture.image_url) %> <br>
-    <%= @picture.title %>
+
+    <div class="row">
+        <div class="col m12">
+            <div class="card">
+                <div class="card-image">
+                <%= image_tag(@picture.image_url) %>
+                    <div class="card-content">
+                        <%= @picture.title %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
 
