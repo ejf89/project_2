@@ -1,3 +1,20 @@
-<h1><%@users.each do |user|%></h1>
-<h2><%=link_to user.username, user_path(user)%></h2>
-<%end%>
+<div class="container">
+  <div class="row"></div>
+  <div class="row"></div>
+  <h1><center>My Beautiful Friends</center></h1>
+  <div class="row"></div>
+  <div class="row"></div>
+    <%@users.each do |user|%>
+    <div class="row">
+     <div class="card-panel grey lighten-5 z-depth-1">
+       <div class="row valign-wrapper">
+         <div class="col s12">
+           <img src="http://i.imgur.com/C8vkhdo.png" alt="" class="circle responsive-img">
+           <h5><%=link_to user.username, user_path(user)%></h5>
+         </div>
+       </div>
+     </div>
+     </div>
+    <%end%>
+
+</div>
