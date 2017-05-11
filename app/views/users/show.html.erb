@@ -53,14 +53,17 @@
             <tr>
                 <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
                 <!-- <td><%= b.label { b.check_box(class: "check_box") + b.text} %></td> -->
-<<<<<<< HEAD
-            <td> <input type="checkbox" class="filled-in" id="<%= b.object[:id] %>" />
-                <label for="f<%= b.object[:id] %>"><%= b.text %></label> </td>
-=======
+
 
                 <input type="checkbox" class="filled-in-box" id="<%=b.object[:id]%>" name="picture[tag_ids][]" value="<%=b.object[:id]%>" />
                      <label for="<%=b.object[:id]%>"><%=b.text%></label>
->>>>>>> a839fe8d2e3bee00cb2055a89a9bff1dffb06e8e
+
+
+
+                <input type="checkbox" class="filled-in-box" id="<%=b.object[:id]%>" name="picture[tag_ids][]" value="<%=b.object[:id]%>" />
+                     <label for="<%=b.object[:id]%>"><%=b.text%></label>
+
+
                 <% end %>
             </tr>
         </table>
