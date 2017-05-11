@@ -1,6 +1,6 @@
 <h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
 
-<div class="container" align="right">
+<div class="" align="right">
   <% if @comments.length != 0 %>
       <p>recent comments:</p>
       <% @comments.each do |comment| %>
@@ -9,22 +9,25 @@
   <% end %>
 </div>
 
-<div class="container" align="right">
-  <p>trendin tags</p>
+<div class="" align="right">
+  <div class="42a5f5 blue-text lighten-1">trendin tags:</div>
 <% Tag.trending.each do |tag| %>
      <%= link_to tag.name, tag_path(tag) %>
 <% end %>
 </div>
 
-<div class="container" align="right">
 
-  <p>most populare:</p>
+<div class="" align="right">
+  <p><div class="42a5f5 blue-text lighten-1"><font font-size="10">most populare:</font></div></p>
+
 <% Tag.most_popular.each do |tag| %>
+</div>
+
 <div class="row">
-  <div class="col s6">
-    <div class="chip">
-      <div class="right"></div>
-      <%= link_to tag.name, tag_path(tag) %>
+
+    <div class="col s1 offset-s11">
+      <div class="chip">
+        <%= link_to tag.name, tag_path(tag) %>
       </div>
     </div>
 <% end %>
