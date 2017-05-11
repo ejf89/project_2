@@ -17,10 +17,18 @@
 </div>
 
 <div class="container" align="right">
-      <p>most populare:</p>
-    <% Tag.most_popular.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag) %>
-    <% end %>
+
+  <p>most populare:</p>
+<% Tag.most_popular.each do |tag| %>
+<div class="row">
+  <div class="col s6">
+    <div class="chip">
+      <div class="right"></div>
+      <%= link_to tag.name, tag_path(tag) %>
+      </div>
+    </div>
+<% end %>
+
 </div>
 
 <div class="container" align="center">
