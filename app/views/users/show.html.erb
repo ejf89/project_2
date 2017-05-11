@@ -1,70 +1,46 @@
 <h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
 
-<div class="" align="right">
-  <% if @comments.length != 0 %>
-      <p>recent comments:</p>
-      <% @comments.each do |comment| %>
-      <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
-    <% end %>
-  <% end %>
-</div>
+<div class="container">
 
-
-
-<div class="row">
-  <!-- <div class="" align="right"> -->
-    <p><div class="42a5f5 blue-text lighten-1"><font font-size="10">most populare:</font></p>
-      <div class="col s2">
-      <% Tag.most_popular.each do |tag| %>
-                <div class="chip">
-                  <%= link_to tag.name, tag_path(tag) %>
-                </div>
-
+    <div class="" align="right">
+      <% if @comments.length != 0 %>
+          <p>recent comments:</p>
+          <% @comments.each do |comment| %>
+          <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
         <% end %>
-        </div>
-
-
-
-
-    <!-- <div class="" align="left"> -->
-      <div class="42a5f5 blue-text lighten-1">trendin tags:
-        <div class="col s2" align="right">
-        <% Tag.trending.each do |tag| %>
-          <div class="chip">
-            <%= link_to tag.name, tag_path(tag) %>
-          </div>
-        <% end %>
-      </div>
-
-  </div>
-</div>
-
-
-<!-- <div class="" align="right">
-  <p><div class="42a5f5 blue-text lighten-1"><font font-size="10">most populare:</font></div></p>
-    <% Tag.most_popular.each do |tag| %>
-      <div class="row">
-        <div class="col s1 offset-s11">
-          <div class="chip">
-            <%= link_to tag.name, tag_path(tag) %>
-          </div>
-        </div>
       <% end %>
     </div>
-</div> -->
 
-<div class="container" align="center">
+
+    <div class="row">
+            <div class="col s2 left" >
+                  <% Tag.most_popular.each do |tag| %>
+                            <div class="chip">
+                              <%= link_to tag.name, tag_path(tag) %>
+                            </div>
+                    <% end %>
+            </div>
+
+              <div class="col s2 offset-s8">
+              <% Tag.trending.each do |tag| %>
+                    <div class="chip">
+                      <%= link_to tag.name, tag_path(tag) %>
+                    </div>
+              <% end %>
+            </div>
+    </div>
+
+
+<!-- <div class="container"> -->
     <% @sorted.reverse.each do |picture| %>
-        <div class="row">
-            <div class="col s12">
-                <div class="class="responsive-img" ">
-                    <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+       <div class="row">
+           <div class="col s12 center">
+                   <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+           </div>
+       </div>
+   <% end %>
+<!-- </div> -->
 
-                </div>
-          </div>
-        </div>
-    <% end %>
-</div>
 
         <div class="row">
             <div class="col s6 offset-s3">
@@ -75,7 +51,7 @@
         </div>
 
 
-    <div class="container">
+
         <% if current_user.id == @user.id %>
             <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
             <div class="row" align="center" id="bottom">
@@ -144,4 +120,6 @@
 
           <% end %>
         <% end %>
-    </div>
+
+
+</div>
