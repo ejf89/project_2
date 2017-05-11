@@ -9,23 +9,24 @@
   </head>
 
   <body>
-    <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><img src="http://i.imgur.com/CrdKavI.png"></a>
+      <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo"><img src="http://i.imgur.com/CrdKavI.png"></a>
+        <div class="container">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%=link_to "My Feed", user_path(current_user)%></li>
+          <li><%=link_to "Friends", users_path %></li>
+          <li><%=link_to "Tags", tags_path %></li>
 
-        <li><%=link_to "My Feed", user_path(current_user)%></li>
-        <li><%=link_to "Friends", users_path %></li>
-        <li><%=link_to "Tags", tags_path %></li>
-      
 
-      </ul>
+        </ul>
 
+      </div>
+
+    </nav>
+
+      <%= yield %>
     </div>
-
-  </nav>
-
-    <%= yield %>
   </body>
 </html>
