@@ -38,7 +38,10 @@
     <% @sorted.reverse.each do |picture| %>
         <div class="row">
             <div class="col s12">
-              <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+                <div class="class="responsive-img" ">
+                    <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+
+                </div>
           </div>
         </div>
     <% end %>

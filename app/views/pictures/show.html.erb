@@ -1,12 +1,10 @@
 <div class="container" align="center">
 
     <div class="row">
-        <div class="col m12">
+        <div class="col m12" padding-top: "40px">
             <div class="card">
-                <!-- <div class="card-image"> -->
-                <div class="responsive-img">
-                    <!-- class="responsive-img"  -->
-                <%= image_tag(@picture.image_url) %>
+                <div class="card-image">
+                    <%= image_tag(@picture.image_url) %>
                     <div class="card-content">
                         <%= @picture.title %>
                     </div>
@@ -30,17 +28,26 @@
         <% @picture.tags.each do |tag| %>
             #<%=link_to tag.name, tag_path(tag) %>
         <% end %>
-    <br>
-    <br>
-    add a comment:
-    <%= form_for @comment do |f| %>
-    <%= f.text_area :content %> <br>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :picture_id, :value => @picture.id %>
-    <%=f.submit "Add Comment", {:controller => 'comments', :action => 'create', :method => 'post', 'picture_id' => @picture.id} %>
-    <% end %>
+    <!-- <br>
+    <br> -->
+    <div class="row">
+        <div class="col s6 offset-s3">
+            add a comment:
+            <%= form_for @comment do |f| %>
+            <%= f.text_area :content %> <br>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :picture_id, :value => @picture.id %>
+            <a class="waves-effect waves-light btn"><i class="material-icons left">thumb_up</i><%=f.submit "Add Comment", {:controller => 'comments', :action => 'create', :method => 'post', 'picture_id' => @picture.id} %></a>
+            <% end %>
 
-    <% if current_user.id == @user.id %>
-        <%= button_to 'delete photo', user_picture_path(@picture), method: :delete %>
-    <% end %>
+
+
+
+            <% if current_user.id == @user.id %>
+            <a class="waves-effect waves-light btn"><%= button_to "delete photo", user_picture_path(@picture), method: :delete %></a>
+
+            <% end %>
+        </div>
+    </div>
+
 </div>
