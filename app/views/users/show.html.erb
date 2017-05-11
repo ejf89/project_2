@@ -19,7 +19,13 @@
 <div class="container" align="right">
   <p>most populare:</p>
 <% Tag.most_popular.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
+<div class="row">
+  <div class="col s6">
+    <div class="chip">
+      <div class="right"></div>
+      <%= link_to tag.name, tag_path(tag) %>
+      </div>
+    </div>
 <% end %>
 </div>
 
@@ -37,25 +43,39 @@
 <div class="container">
     <% if current_user.id == @user.id %>
         <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
-        <%=f.label :image_url %>
-        <%=f.text_field :image_url %>
-        <%=f.label :title %>
-        <%=f.text_field :title %>
-        <%=f.label :tag %>
-          <%=fields_for :tag, @tag do |ff| %>
-              <%=ff.text_field :name %>
-          <% end %>
+        <div class="row" align="center">
+                <div class="col s10 offset-s1">
+                    <!-- <%=f.label :image_url %> -->
+                <%=f.text_field :image_url, placeholder: "Please enter an image address"%>
+                </div>
+
+                    <div class="col s8 offset-s2">
+                        <!-- <%=f.label :title %> -->
+                        <%=f.text_field :title, placeholder: "enter a caption here!" %>
+                    </div>
+
+                    <div class="col s6 offset-s3">
+                        <%=fields_for :tag, @tag do |ff| %>
+                        <!-- <%=f.label :tag %> -->
+                            <%=ff.text_field :name,  placeholder: "Create a new tag" %>
+                        <% end %>
+                    </div>
+
         <%=f.hidden_field :user_id, :value => @user.id %>
+    </div>
+
 
         <br>
         <br>
-        <table border = "1">
+        <table >
             <tr>
                 <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
                 <!-- <td><%= b.label { b.check_box(class: "check_box") + b.text} %></td> -->
 
-                <input type="checkbox" class="filled-in-box" id="<%=b.object[:id]%>" name="picture[tag_ids][]" value="<%=b.object[:id]%>" />
-                     <label for="<%=b.object[:id]%>"><%=b.text%></label>
+
+        <td><input type="checkbox" class="filled-in-box" id="<%=b.object[:id]%>" name="picture[tag_ids][]" value="<%=b.object[:id]%>" />
+         <label for="<%=b.object[:id]%>"><%=b.text%></label>    </td>
+
                 <% end %>
             </tr>
         </table>
