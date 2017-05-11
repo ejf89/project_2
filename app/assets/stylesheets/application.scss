@@ -17,7 +17,19 @@
  @import 'materialize';
 
 
+ 
+.card {
+    width: 70%
+}
 
+.card-image {
+    width: 90%;
+    height: 90%
+}
+
+.card-content {
+    text-align: center;
+}
 
 /*body {
      background-color: #00ff00;
