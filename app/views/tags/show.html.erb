@@ -1,6 +1,10 @@
-<%= @tag.name %>
+<div class="container">
+
+<h2><center><%= @tag.name %></center></h2>
 
 
 <% @tag.pictures.each do |picture| %>
 <%= link_to (image_tag picture.image_url), user_picture_path(picture.user, picture) %>
 <% end %>
+
+</div>
