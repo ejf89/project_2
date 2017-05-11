@@ -34,12 +34,12 @@
 
         <br>
         <br>
-        <table border = "1">
+        <table >
             <tr>
                 <%= collection_check_boxes(:picture, :tag_ids, Tag.all, :id, :name) do |b| %>
                 <!-- <td><%= b.label { b.check_box(class: "check_box") + b.text} %></td> -->
-                <input type="checkbox" class="filled-in-box" id="<%=tag.id%>" />
-                     <label for="<%=tag.id%>"><%=b.text%></label>
+            <td> <input type="checkbox" class="filled-in" id="<%= b.object[:id] %>" />
+                <label for="f<%= b.object[:id] %>"><%= b.text %></label> </td>
                 <% end %>
             </tr>
         </table>
