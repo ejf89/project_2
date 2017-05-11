@@ -1,19 +1,22 @@
-<h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
 
 <div class="container">
 
-    <div class="" align="right">
+    <h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
+
+
+    <!-- <div class="" align="right">
       <% if @comments.length != 0 %>
           <p>recent comments:</p>
           <% @comments.each do |comment| %>
           <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
         <% end %>
       <% end %>
-    </div>
+    </div> -->
 
 
     <div class="row">
             <div class="col s2 left" >
+                <p>Popular Tags:</p>
                   <% Tag.most_popular.each do |tag| %>
                             <div class="chip">
                               <%= link_to tag.name, tag_path(tag) %>
@@ -21,7 +24,15 @@
                     <% end %>
             </div>
 
-              <div class="col s2 offset-s8">
+            <div class="col s2 push-s3 ">
+                 <p>recent comments:</p>
+                 <% @comments.each do |comment| %>
+                 <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
+               <% end %>
+            </div>
+
+              <div class="col s2 push-s5">
+                  <p>trending now:</p>
               <% Tag.trending.each do |tag| %>
                     <div class="chip">
                       <%= link_to tag.name, tag_path(tag) %>
