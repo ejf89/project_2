@@ -25,6 +25,12 @@ before_action :authorize_user, only: [:index, :show]
     @sorted = @pictures.sort_by {|picture| picture.id}
     @picture = Picture.new
     @tags = @pictures.collect{|picture| picture.tags}.flatten
+
+    #collect comments from pictures
+    @comments = @pictures.map {|x| x.comments}
+    @comments.flatten!
+    @comments.delete_if {|comment| comment.user_id == @user.id}
+    
   end
 
 

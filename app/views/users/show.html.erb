@@ -1,5 +1,12 @@
 <h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
 
+<div class="container" align="right">
+    <p>recent comments:</p>
+    <% @comments.each do |comment| %>
+    <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
+    <% end %>
+</div>
+
 
 <div class="container" align="center">
     <% @sorted.reverse.each do |picture| %>
@@ -34,7 +41,6 @@
 
                 <% end %>
             </tr>
-
         </table>
 
         <%=f.submit "Add Photo" %>
