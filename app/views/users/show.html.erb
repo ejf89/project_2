@@ -1,4 +1,27 @@
 
+<center>
+  <br>
+  <div class="row">
+      <div class="col s12">
+        <div class="card-panel white">
+            <%= image_tag('smiley.png') %>
+            <h5><%= @user.username %></h5>
+            <h5><%= @user.email %></h5>
+          </div>
+        </div>
+      </div>
+</center>
+
+<div class="" align="right">
+  <% if @comments.length != 0 %>
+      <p>recent comments:</p>
+      <% @comments.each do |comment| %>
+      <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
+    <% end %>
+  <% end %>
+</div>
+
+
 <div class="container">
 
     <h1><%= @user.username %></h1> <h1><%= @user.email %></h1>
