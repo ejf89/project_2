@@ -12,15 +12,29 @@
     <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo"><img src="http://i.imgur.com/CrdKavI.png"></a>
-
+      <div class="container">
+        <div class="row">
+        <div class="col s5">
+            <% if logged_in? %>
+            <%= "Welcome! #{current_user.username}" %>
+            <% end %>
+        </div>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-
+        <% if logged_in? %>
         <li><%=link_to "My Feed", user_path(current_user)%></li>
         <li><%=link_to "Friends", users_path %></li>
         <li><%=link_to "Tags", tags_path %></li>
-      
+        <li><%=link_to "Log Out", user_path(current_user), method: :delete %></li>
+        <% else %>
+        <li><%=link_to "Log In", login_path %></li>
+        <li><%=link_to "Sign Up", signup_path %></li>
+        <% end %>
 
       </ul>
+
+        </div>
+
+      </div>
 
     </div>
 
