@@ -12,6 +12,7 @@ class Tag < ApplicationRecord
   end
 
 
+
       def self.trending
           @pictures = Picture.all[-10..-1]
 
