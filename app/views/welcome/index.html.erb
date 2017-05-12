@@ -5,7 +5,7 @@
     <% else %>
     <center><h1>What would you like to do?</h1>
     <%= link_to "Go to my feed", user_path(current_user) %>
-    <p><%= link_to "Upload a photo", user_path(current_user) %></p>
+    <p><%= link_to "Upload a photo", user_path(current_user, anchor: "bottom") %></p>
     <p><%= link_to "Check out my friends", users_path %></p>
     <p><%= link_to "Check trending/most popular tags", tags_path %></p>
     </center>
