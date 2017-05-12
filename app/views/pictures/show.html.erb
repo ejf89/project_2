@@ -28,8 +28,7 @@
         <% @picture.tags.each do |tag| %>
             #<%=link_to tag.name, tag_path(tag) %>
         <% end %>
-    <!-- <br>
-    <br> -->
+
     <div class="row">
         <div class="col s6 offset-s3">
             add a comment:
@@ -40,10 +39,9 @@
             <a class="waves-effect waves-light btn"><i class="material-icons left">thumb_up</i><%=f.submit "Add Comment", {:controller => 'comments', :action => 'create', :method => 'post', 'picture_id' => @picture.id} %></a>
             <% end %>
 
-
+            <br>
             <% if current_user.id == @user.id %>
             <a class="waves-effect waves-light btn"><%= button_to "delete photo", user_picture_path(@picture), method: :delete %></a>
-
             <% end %>
         </div>
     </div>
