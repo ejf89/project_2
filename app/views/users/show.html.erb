@@ -9,9 +9,7 @@
             <h5><%= @user.email %></h5>
             <p>Bio:</p>
             <p>i love long walks on beach and dolphins</p>
-            <p>Update Profile or Add Photo </p>
-
-            <%= link_to root_path do %>
+            <%= link_to user_path(current_user, anchor: "bottom") do %>
             <!-- i want this to link to the bottom upload field -->
               <i class="small material-icons">library_add</i>
                 <% end %>
@@ -36,9 +34,9 @@
                     <% end %>
             </div>
 
-            <div class="col s2 push-s3 ">
+            <div class="col s3 push-s3 ">
                  <p>recent comments:</p>
-                 <% @comments.each do |comment| %>
+                 <% @comments.take(3).each do |comment| %>
                  <%= link_to comment.user.username, user_path(comment.user) %>:   <%= comment.content %> <br>
                <% end %>
             </div>
@@ -46,7 +44,7 @@
               <div class="col s2 push-s5">
                   <p>trending now:</p>
               <% Tag.trending.each do |tag| %>
-                    <div class="chip">
+                    <div class="chip right">
                       <%= link_to tag.name, tag_path(tag) %>
                     </div>
               <% end %>
