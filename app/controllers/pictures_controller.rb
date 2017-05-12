@@ -16,7 +16,6 @@ class PicturesController < ApplicationController
   if !params[:picture]["image_url"].empty?
         @picture = Picture.new(picture_params)
         if !params[:tag][:name].empty?
-        #   @tag = Tag.find_or_create_by(name: params[:tag][:name])
           @tag = Tag.new(name: params[:tag][:name])
           if @tag.valid?
             @tag.save
@@ -25,10 +24,13 @@ class PicturesController < ApplicationController
           end
           @picture.update(tag_ids: @picture.tag_ids << @tag.id)
         end
-        @picture.save
-        redirect_to user_picture_path(current_user, @picture.id)
+            if @picture.save
+                redirect_to user_picture_path(@picture.user.id, @picture.id)
+            else
+                flash[:notice] = "Are you sure thats the right address?"
+                redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
+            end
     else
-
         flash[:notice] = "Please enter a picture url!"
         redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
     end
