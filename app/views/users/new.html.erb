@@ -1,4 +1,4 @@
-<h1>Please Sign In Here: </h1><br>
+<h1>Please Sign Up Here: </h1><br>
 <%= flash[:notice] %>
 <br>
 <%=form_for @user do |f| %>
@@ -13,7 +13,7 @@
 <%= f.label :user_pic %>
 
 <div class="placeformat">
-    <%= f.text_field :user_pic, value: 'Drop in an image url to customize your profile!' %>
+    <%= f.text_field :user_pic, placeholder: 'Drop in an image url to customize your profile!' %>
 </div>
 <%=f.submit %>
 <%end %>
