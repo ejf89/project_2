@@ -1,7 +1,8 @@
 <div class="container">
     <% if !logged_in? %>
-    <h1><%=link_to 'Please Login', login_path%></h1>
-    <h2><%=link_to 'Or Signup', signup_path%></h2>
+    <br>
+    <center><h2><%=link_to 'Please Login', login_path%></h2>
+    <p><h2><%=link_to 'Or Signup', signup_path%></h2></p></center>
     <% else %>
     <center><h1>What would you like to do?</h1>
     <%= link_to "Go to my feed", user_path(current_user) %>

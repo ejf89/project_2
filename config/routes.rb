@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   get '/signup', to: 'users#new', as: 'signup'
-  get '/users', to: 'users#index'
-  post '/users', to: 'users#create'
-  get '/users/:id', to: 'users#show', as: 'user'
-  delete '/users/:id', to: 'sessions#destroy'
-
 
   resources :users do
     resources :pictures, only: [:new, :create, :show, :destroy]
