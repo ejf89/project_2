@@ -14,9 +14,6 @@ class User < ApplicationRecord
         #adjust return value to be comment content
     end
 
-    def to_param
-
-     end
 
 
 
