@@ -2,19 +2,19 @@
   <div class="row"></div>
   <div class="row"></div>
   <h1><center>My Friends</center></h1>
-  <div class="row"></div>
-  <div class="row"></div>
-    <%@users.each do |user|%>
-    <div class="row">
 
-     <div class="card-panel white z-depth-1">
-       <div class="row valign-wrapper">
-         <div class="col s12 center">
+    <%@users.each do |user|%>
+        <center><div class="card">
+          <div class="card-image">
+            <div class="row">
+              <p><div class="col s12 center"></p>
+                <div class="row">
            <%= link_to image_tag(user.user_pic), user_path(user)%>
            <h5><%=link_to user.username, user_path(user)%></h5>
          </div>
        </div>
      </div>
      </div>
+   </div>
     <%end%>
 </div>
