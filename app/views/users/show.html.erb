@@ -13,8 +13,9 @@
             <!-- i want this to link to the bottom upload field -->
               <i class="small material-icons">library_add</i>
                 <% end %>
-
+                <% if current_user.id == @user.id %>
                 <p><%= link_to "Edit Prof Pic", edit_user_path(current_user)%></p>
+                <% end %>
               </div>
           </div>
         </div>
