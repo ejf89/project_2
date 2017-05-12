@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :pictures
   has_many :comments
 
+
     def received_comments
         @pictures = self.pictures
         @pictures.collect do |picture|
