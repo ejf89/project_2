@@ -2,9 +2,22 @@
 
 <h2><center><%= @tag.name %></center></h2>
 
+<div class="row">
+    <div class="col m12" padding-top: "40px">
+        <center><div class="card">
+            <div class="card-image">
+              <div class="row"></div>
+                <% @tag.pictures.each do |picture| %>
+                <div class="row">
+                  <p><div class="col s12 center"></p>
+                  <%= link_to (image_tag picture.image_url), user_picture_path(picture.user, picture) %>
+                </div>
+              </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<% @tag.pictures.each do |picture| %>
-<%= link_to (image_tag picture.image_url), user_picture_path(picture.user, picture) %>
-<% end %>
 
 </div>
