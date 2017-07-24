@@ -90,11 +90,13 @@
 
 
         <% if current_user.id == @user.id %>
-            <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
+            <%=form_for @picture, html: { multipart: true }, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
             <div class="row" align="center" id="bottom">
+              <%= f.file_field :image, class: "form-control" %>
                     <div class="col s10 offset-s1", align="center">
                         <!-- <%=f.label :image_url %> -->
                     <%=f.text_field :image_url, :placeholder => "Please enter an image address (jpeg, png, gif)"%>
+
                     </div>
 
                         <div class="col s8 offset-s2">
@@ -108,8 +110,8 @@
                                 <%=ff.text_field :name,  placeholder: "Create a new tag" %>
                             <% end %>
                         </div>
-
             <%=f.hidden_field :user_id, :value => @user.id %>
+            <%= link_to image_tag(@picture.image.url(:med)), @picture.image.url %>
         </div>
 
 
