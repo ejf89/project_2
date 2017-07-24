@@ -48,7 +48,7 @@ before_action :authorize_user, only: [:index, :show]
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :user_pic)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :image)
   end
 
 end
