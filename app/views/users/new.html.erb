@@ -1,4 +1,4 @@
-<h1>Please Sign Up Here: </h1><br>
+<h3>Please Sign Up Here: </h3><br>
 <%= flash[:notice] %>
 <br>
 
@@ -11,7 +11,9 @@
 <%=f.password_field :password %> <br>
 <%=f.label :password_confirmation %>
 <%=f.password_field :password_confirmation %> <br>
-<%= f.file_field :image, class: "form-control" %>
+<%=f.label :upload_profile_picture %><br><br>
+<%= f.file_field :image %><br><br>
 
-<%=f.submit %>
+    <%=f.submit %>
+
 <%end %>
