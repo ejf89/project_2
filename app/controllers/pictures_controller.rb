@@ -30,10 +30,10 @@ class PicturesController < ApplicationController
                 flash[:notice] = "Are you sure thats the right address?"
                 redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
             end
-    # else
-    #     flash[:notice] = "Please enter a picture url!"
-    #     redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
-    # end
+    else
+        flash[:notice] = "Please enter a picture url!"
+        redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
+    end
   end
 
   def destroy
