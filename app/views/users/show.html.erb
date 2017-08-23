@@ -9,7 +9,8 @@
             <h5><%= @user.email %></h5>
             <p>Bio:</p>
             <p><%= BetterLorem.c(80, true, true) %></p>
-            <%= link_to user_path(current_user.id, anchor: "bottom") do %>
+ <%= link_to user_path(current_user, anchor: "bottom") do %> 
+<!--             <%= link_to user_path(current_user.id, anchor: "bottom") do %> -->
             <!-- i want this to link to the bottom upload field -->
               <i class="small material-icons">library_add</i>
                 <% end %>
