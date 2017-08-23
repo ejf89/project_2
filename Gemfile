@@ -10,6 +10,7 @@ gem 'materialize-sass'
 gem 'pry'
 gem 'bcrypt', '~> 3.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+  ruby '2.3.4'
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'# Use Puma as the app server
