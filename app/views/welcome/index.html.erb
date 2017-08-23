@@ -1,8 +1,9 @@
 <div class="container">
+  <center><h3>Welcome to Outstagram</h3></center>
     <% if !logged_in? %>
     <br>
-    <center><h2><%=link_to 'Please Login', login_path%></h2>
-    <p><h2><%=link_to 'Or Signup', signup_path%></h2></p></center>
+    <center><h4><%=link_to 'Please Login', login_path%></h4>
+    <p><h4><%=link_to 'Or Signup', signup_path%></h4></p></center>
     <% else %>
     <center><h1>What would you like to do?</h1>
     <%= link_to "Go to my feed", user_path(current_user) %>

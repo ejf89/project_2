@@ -4,12 +4,13 @@
   <div class="row">
       <div class="col s12">
         <div class="card-panel white">
-            <%= image_tag(@user.user_pic, class: "responsive-img")  %>
+            <%= image_tag(@user.image, class: "responsive-img")  %>
             <h5><%= @user.username %></h5>
             <h5><%= @user.email %></h5>
             <p>Bio:</p>
-            <p>i love long walks on beach and dolphins</p>
-            <%= link_to user_path(current_user.id, anchor: "bottom") do %>
+            <p><%= BetterLorem.c(80, true, true) %></p>
+ <%= link_to user_path(current_user, anchor: "bottom") do %> 
+<!--             <%= link_to user_path(current_user.id, anchor: "bottom") do %> -->
             <!-- i want this to link to the bottom upload field -->
               <i class="small material-icons">library_add</i>
                 <% end %>
@@ -66,7 +67,7 @@
                   <div class="card-image">
                 <div class="row">
                   <p><div class="col s12 center"></p>
-                    <div class="pix"> <%=  link_to image_tag("#{picture.image_url}"), user_picture_url(@user.id, picture) %>
+                    <div class="pix"> <%=  link_to image_tag("#{picture.image}"), user_picture_url(@user.id, picture) %>
                     </div>
                   </div>
                 </div>
@@ -90,11 +91,11 @@
 
 
         <% if current_user.id == @user.id %>
-            <%=form_for @picture, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
+            <%=form_for @picture, html: { multipart: true }, url: user_pictures_path(@user), :controller => "pictures", :action => "create" do |f| %>
             <div class="row" align="center" id="bottom">
+
                     <div class="col s10 offset-s1", align="center">
-                        <!-- <%=f.label :image_url %> -->
-                    <%=f.text_field :image_url, :placeholder => "Please enter an image address (jpeg, png, gif)"%>
+                      <%= f.file_field :image, class: "form-control" %>
                     </div>
 
                         <div class="col s8 offset-s2">
@@ -108,8 +109,8 @@
                                 <%=ff.text_field :name,  placeholder: "Create a new tag" %>
                             <% end %>
                         </div>
-
             <%=f.hidden_field :user_id, :value => @user.id %>
+            <!-- <%= link_to image_tag(@picture.image.url(:med)), @picture.image.url %> -->
         </div>
 
 
