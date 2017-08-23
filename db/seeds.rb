@@ -2,7 +2,8 @@
   User.create(
     username:"user#{name}",
     email: "user#{name}@example.com",
-    password: "test123"
+    password: "test123",
+    user_pic: 'smiley.png'
   )
 end
 
