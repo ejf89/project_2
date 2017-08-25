@@ -4,7 +4,7 @@ class Picture < ApplicationRecord
   has_many :tags, through: :picture_tags
   has_many :comments
   validate :valid_extension?
-  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200", icon: "32x32" }
+  # has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200", icon: "32x32" }
 
 
   def valid_extension?
