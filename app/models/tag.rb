@@ -22,8 +22,8 @@ class Tag < ApplicationRecord
           end
         @results = @sorted.reverse.map do |picture|
               picture.tags
+              @results.flatten!.uniq
           end
-          @results.flatten!.uniq
       end
 
 

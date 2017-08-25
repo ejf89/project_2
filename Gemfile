@@ -10,9 +10,10 @@ gem 'materialize-sass'
 gem 'pry'
 gem 'bcrypt', '~> 3.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+  # ruby '2.3.4'
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
-gem 'pg'# Use Puma as the app server
+# Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -22,6 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'betterlorem', '~> 0.1.2'
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

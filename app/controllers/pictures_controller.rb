@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
 
   def create
 
-  if !params[:picture]["image_url"].empty?
+  # if !params[:picture]["image"].empty?
         @picture = Picture.new(picture_params)
         if !params[:tag][:name].empty?
           @tag = Tag.new(name: params[:tag][:name])
@@ -30,10 +30,10 @@ class PicturesController < ApplicationController
                 flash[:notice] = "Are you sure thats the right address?"
                 redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
             end
-    else
-        flash[:notice] = "Please enter a picture url!"
-        redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
-    end
+    # else
+    #     flash[:notice] = "Please enter a picture url!"
+    #     redirect_to user_path(params["picture"]["user_id"], anchor: 'bottom')
+    # end
   end
 
   def destroy
@@ -46,7 +46,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:image_url, :title, :user_id, :tag_ids =>[])
+    params.require(:picture).permit(:image_url, :image, :title, :user_id, :tag_ids =>[])
   end
 
 
